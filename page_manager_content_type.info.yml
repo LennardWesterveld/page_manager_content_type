@@ -1,0 +1,8 @@
+type: module
+name: Page Manager content type
+description: 'Provides a way to place blocks on content type specific'
+package: Layout
+version: VERSION
+core: 8.x
+dependencies:
+  - page_manager
