@@ -43,162 +43,252 @@ entity.page_manager_content_type.delete_form:
 #### Access Conditions
 
 page_manager_content_type.access_condition_select:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/access/select'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/access/select'
   defaults:
     _controller: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::selectAccessCondition'
     _title: 'Select access condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  #TODO: temporary fix for page because otherwise the $page don't reach the form
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.access_condition_add:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/access/add/{condition_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/access/add/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager_content_type\Form\AccessConditionAddForm'
     _title: 'Add new access condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.access_condition_edit:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/access/edit/{condition_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/access/edit/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager_content_type\Form\AccessConditionEditForm'
     _title_callback: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::editAccessConditionTitle'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.access_condition_delete:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/access/delete/{condition_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/access/delete/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager_content_type\Form\AccessConditionDeleteForm'
     _title: 'Delete access condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 #### Static Contexts
 
 page_manager_content_type.static_context_add:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/context/add'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/context/add'
   defaults:
     _form: '\Drupal\page_manager\Form\StaticContextAddForm'
     _title: 'Add new static context'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.static_context_edit:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/context/edit/{name}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/context/edit/{name}'
   defaults:
     _form: '\Drupal\page_manager\Form\StaticContextEditForm'
     _title_callback: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::editStaticContextTitle'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.static_context_delete:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/context/delete/{name}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/context/delete/{name}'
   defaults:
     _form: '\Drupal\page_manager\Form\StaticContextDeleteForm'
     _title: 'Delete static context'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 
 #### Display variants
+page_manager_content_type.display_variant_edit2:
+  path: '/admin/test123/{page}/manage/{display_variant_id}'
+  defaults:
+    _form: '\Drupal\page_manager\Form\DisplayVariantEditForm'
+    _title: 'test'
+#    _title_callback: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::editDisplayVariantTitle'
+  requirements:
+    _entity_access: 'page_manager_content_type.update'
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
+
 
 page_manager_content_type.display_variant_select:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/add'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/add'
   defaults:
     _controller: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::selectDisplayVariant'
     _title: 'Select display variant'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_add:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/add/{display_variant_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/add/{display_variant_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantAddForm'
     _title: 'Add new display variant'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_edit:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantEditForm'
     _title_callback: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::editDisplayVariantTitle'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_delete:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}/delete'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}/delete'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantDeleteForm'
     _title: 'Delete display variant'
+  options:
+      parameters:
+        page:
+          type: 'entity:page_manager_content_type'
 #  requirements:
 #    _entity_access: page_manager_content_type.update
 
 page_manager_content_type.display_variant_select_block:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}/block/select'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}/block/select'
   defaults:
     _controller: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::selectBlock'
     _title: 'Select block'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_add_block:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}/block/add/{block_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}/block/add/{block_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantAddBlockForm'
     _title: 'Add block to display variant'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_edit_block:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}/block/edit/{block_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}/block/edit/{block_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantEditBlockForm'
     _title: 'Edit block in display variant'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.display_variant_delete_block:
-  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page_manager_content_type}/manage/{display_variant_id}/block/delete/{block_id}'
+  path: '/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/manage/{page}/manage/{display_variant_id}/block/delete/{block_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\DisplayVariantDeleteBlockForm'
     _title: 'Delete block in display variant'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 
 #### Selection Conditions
 
 page_manager_content_type.selection_condition_select:
-  path: '/admin/structure/page_manager_content_type/manage/{page_manager_content_type}/manage/{display_variant_id}/selection/select'
+  path: '/admin/structure/page_manager_content_type/manage/{page}/manage/{display_variant_id}/selection/select'
   defaults:
     _controller: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::selectSelectionCondition'
     _title: 'Select selection condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.selection_condition_add:
-  path: '/admin/structure/page_manager_content_type/manage/{page_manager_content_type}/manage/{display_variant_id}/selection/add/{condition_id}'
+  path: '/admin/structure/page_manager_content_type/manage/{page}/manage/{display_variant_id}/selection/add/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\SelectionConditionAddForm'
     _title: 'Add new selection condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.selection_condition_edit:
-  path: '/admin/structure/page_manager_content_type/manage/{page_manager_content_type}/manage/{display_variant_id}/selection/edit/{condition_id}'
+  path: '/admin/structure/page_manager_content_type/manage/{page}/manage/{display_variant_id}/selection/edit/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\SelectionConditionEditForm'
     _title_callback: '\Drupal\page_manager_content_type\Controller\PageContentTypeController::editSelectionConditionTitle'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 
 page_manager_content_type.selection_condition_delete:
-  path: '/admin/structure/page_manager_content_type/manage/{page_manager_content_type}/manage/{display_variant_id}/selection/delete/{condition_id}'
+  path: '/admin/structure/page_manager_content_type/manage/{page}/manage/{display_variant_id}/selection/delete/{condition_id}'
   defaults:
     _form: '\Drupal\page_manager\Form\SelectionConditionDeleteForm'
     _title: 'Delete selection condition'
   requirements:
     _entity_access: page_manager_content_type.update
+  options:
+    parameters:
+      page:
+        type: 'entity:page_manager_content_type'
 

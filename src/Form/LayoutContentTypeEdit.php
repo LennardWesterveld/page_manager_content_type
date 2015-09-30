@@ -48,13 +48,14 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
       '#title' => $this->t('Available context'),
       '#open' => TRUE,
     ];
+
     $form['context']['add'] = [
       '#type' => 'link',
       '#title' => $this->t('Add new static context'),
       '#url' => Url::fromRoute('page_manager_content_type.static_context_add', [
         'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
         'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-        'page_manager_content_type' => $this->entity->id(),
+        'page' => $this->entity->id(),
       ]),
       '#attributes' => $add_button_attributes,
       '#attached' => [
@@ -96,7 +97,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
           'url' => Url::fromRoute('page_manager_content_type.static_context_edit', [
             'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
             'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-            'page_manager_content_type' => $this->entity->id(),
+            'page' => $this->entity->id(),
             'name' => $name,
           ]),
           'attributes' => $attributes,
@@ -106,7 +107,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
           'url' => Url::fromRoute('page_manager_content_type.static_context_delete', [
             'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
             'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-            'page_manager_content_type' => $this->entity->id(),
+            'page' => $this->entity->id(),
             'name' => $name,
           ]),
           'attributes' => $attributes,
@@ -131,7 +132,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
       '#url' => Url::fromRoute('page_manager_content_type.display_variant_select', [
         'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
         'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-        'page_manager_content_type' => $this->entity->id(),
+        'page' => $this->entity->id(),
       ]),
       '#attributes' => $add_button_attributes,
       '#attached' => [
@@ -180,7 +181,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
         'url' => Url::fromRoute('page_manager_content_type.display_variant_edit', [
           'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
           'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-          'page_manager_content_type' => $this->entity->id(),
+          'page' => $this->entity->id(),
           'display_variant_id' => $display_variant_id,
         ]),
       ];
@@ -189,7 +190,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
         'url' => Url::fromRoute('page_manager_content_type.display_variant_delete', [
           'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
           'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-          'page_manager_content_type' => $this->entity->id(),
+          'page' => $this->entity->id(),
           'display_variant_id' => $display_variant_id,
         ]),
       ];
@@ -212,7 +213,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
         '#url' => Url::fromRoute('page_manager_content_type.access_condition_select', [
           'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
           'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-          'page_manager_content_type' => $this->entity->id(),
+          'page' => $this->entity->id(),
         ]),
         '#attributes' => $add_button_attributes,
         '#attached' => [
@@ -253,7 +254,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
           'url' => Url::fromRoute('page_manager_content_type.access_condition_edit', [
             'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
             'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-            'page_manager_content_type' => $this->entity->id(),
+            'page' => $this->entity->id(),
             'condition_id' => $access_id,
           ]),
           'attributes' => $attributes,
@@ -263,7 +264,7 @@ class LayoutContentTypeEdit extends LayoutContentTypeBase {
           'url' => Url::fromRoute('page_manager_content_type.access_condition_delete', [
             'entity_bundle' => (!empty($entity_bundle)) ? $entity_bundle : 'empty',
             'entity_view_mode' => (!empty($entity_view_mode)) ? $entity_view_mode : 'empty',
-            'page_manager_content_type' => $this->entity->id(),
+            'page' => $this->entity->id(),
             'condition_id' => $access_id,
           ]),
           'attributes' => $attributes,

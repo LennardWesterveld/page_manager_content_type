@@ -53,13 +53,22 @@ use Drupal\page_manager\Entity\Page;
  *   },
  *   links = {
  *     "add-form" = "/admin/structure/types/manage/{entity_bundle}/layout/{entity_view_mode}/add",
- *     "edit-form" = "/admin/structure/types/manage/{entity_bundle}/page_manager/edit/{page_manager_content_type}",
- *     "delete-form" = "/admin/structure/types/manage/{entity_bundle}/page_manager/delete/{page_manager_content_type}",
+ *     "edit-form" = "/admin/structure/types/manage/{entity_bundle}/page_manager/edit/{page}",
+ *     "delete-form" = "/admin/structure/types/manage/{entity_bundle}/page_manager/delete/{page}",
  *   }
  * )
  */
 
 class PageContentType extends Page implements PageInterface {
+
+  /**
+   * Overrides Entity::__construct().
+   */
+  public function __construct(array $values, $entity_type) {
+    $var = 'test';
+    parent::__construct($values, $entity_type);
+  }
+
 
   /**
    * {@inheritdoc}
@@ -73,6 +82,13 @@ class PageContentType extends Page implements PageInterface {
     $uri->setRouteParameter('entity_view_mode', (!empty($entity_view_mode)) ? $entity_view_mode : 'empty');
 
     return $uri;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPath() {
+    return 'test123';
   }
 
 }
